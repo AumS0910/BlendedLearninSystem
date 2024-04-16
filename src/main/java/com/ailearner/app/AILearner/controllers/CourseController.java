@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/course")
 public class CourseController {
     @Autowired
     private final CourseService courseService;
@@ -34,14 +35,14 @@ public class CourseController {
         return courseService.getCourseById(id);
     }
 
-    @PostMapping(consumes = "multipart/form-data")
-    public Course createCourse(@RequestBody Course course, @RequestPart("image")MultipartFile file) {
+    @PostMapping("/add")
+    public Course createCourse(@RequestBody Course course,MultipartFile file) {
         String uploadResult=cloudinaryImageService.upload(file);
-        if(uploadResult.contains("url")){
-            String imageUrl= String.valueOf(uploadResult.contains("url"));
-            course.setCoverImagePath(imageUrl);
+        if(!uploadResult.isEmpty()){
+//            String imageUrl= String.valueOf(uploadResult.contains("url"));
+            course.setCoverImagePath(uploadResult);
         }else{
-            throw new RuntimeException("Failed to upload image")
+            throw new RuntimeException("Failed to upload image");
         }
         return courseService.createCourse(course);
     }
