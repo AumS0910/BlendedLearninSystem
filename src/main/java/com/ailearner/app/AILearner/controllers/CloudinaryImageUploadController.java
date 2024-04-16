@@ -16,12 +16,24 @@ import java.util.Map;
 @RequestMapping("/cloudinary/upload")
 public class CloudinaryImageUploadController {
 
+//    @Autowired
+//    private CloudinaryImageService cloudinaryImageService;
+//
+//    @PostMapping
+//    public ResponseEntity<Map> uploadImage(@RequestParam("image")MultipartFile file){
+//        Map data=this.cloudinaryImageService.upload(file);
+//        return new ResponseEntity<>(data, HttpStatus.OK);
+//    }
+private final CloudinaryImageService cloudinaryImageService;
+
     @Autowired
-    private CloudinaryImageService cloudinaryImageService;
+    public CloudinaryImageUploadController(CloudinaryImageService cloudinaryImageService) {
+        this.cloudinaryImageService = cloudinaryImageService;
+    }
 
     @PostMapping
-    public ResponseEntity<Map> uploadImage(@RequestParam("image")MultipartFile file){
-        Map data=this.cloudinaryImageService.upload(file);
+    public ResponseEntity<Map<String, String>> uploadImage(@RequestParam("image") MultipartFile file) {
+        Map<String, String> data = this.cloudinaryImageService.upload(file);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 }
