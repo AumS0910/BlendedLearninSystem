@@ -17,7 +17,7 @@ public class Student {
     }
 
     @JsonCreator
-    public Student(long id, String name, Long PRN, int rollNo, String email) {
+    public Student(String name, Long PRN, int rollNo, String email) {
 
         Name = name;
         this.PRN = PRN;
@@ -49,15 +49,6 @@ public class Student {
     public void setPRN(Long PRN) {
         this.PRN = PRN;
     }
-
-    public String getMail() {
-        return email;
-    }
-
-    public void setMail(String mail) {
-        this.email = mail;
-    }
-
 
     @Override
     public String toString() {
