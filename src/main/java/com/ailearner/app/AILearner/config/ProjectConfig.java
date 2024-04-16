@@ -26,8 +26,8 @@ public class ProjectConfig {
     public CloudinaryImageService cloudinaryImageService() {
         return new CloudinaryImageService() {
             @Override
-            public Map upload(MultipartFile file) {
-                return Map.of();
+            public String upload(MultipartFile file) {
+                return Map.of().toString();
             }
         };
     }

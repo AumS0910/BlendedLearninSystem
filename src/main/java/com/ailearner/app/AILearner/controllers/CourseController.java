@@ -1,16 +1,28 @@
 package com.ailearner.app.AILearner.controllers;
 
 import com.ailearner.app.AILearner.entity.Course;
+import com.ailearner.app.AILearner.service.CloudinaryImageService;
 import com.ailearner.app.AILearner.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class CourseController {
     @Autowired
-    private CourseService courseService;
+    private final CourseService courseService;
+
+    @Autowired
+    private final CloudinaryImageService cloudinaryImageService;
+
+    public CourseController(CourseService courseService, CloudinaryImageService cloudinaryImageService, CloudinaryImageService cloudinaryImageService1) {
+        this.courseService = courseService;
+        this.cloudinaryImageService = cloudinaryImageService1;
+    }
 
     @GetMapping
     public List<Course> getAllCourses() {
@@ -22,8 +34,15 @@ public class CourseController {
         return courseService.getCourseById(id);
     }
 
-    @PostMapping
-    public Course createCourse(@RequestBody Course course) {
+    @PostMapping(consumes = "multipart/form-data")
+    public Course createCourse(@RequestBody Course course, @RequestPart("image")MultipartFile file) {
+        String uploadResult=cloudinaryImageService.upload(file);
+        if(uploadResult.contains("url")){
+            String imageUrl= String.valueOf(uploadResult.contains("url"));
+            course.setCoverImagePath(imageUrl);
+        }else{
+            throw new RuntimeException("Failed to upload image")
+        }
         return courseService.createCourse(course);
     }
 

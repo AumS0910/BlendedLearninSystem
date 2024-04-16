@@ -27,7 +27,7 @@ public class CloudinaryImageServiceImplements implements CloudinaryImageService{
     }
 
     @Override
-    public Map upload(MultipartFile file) {
+    public String upload(MultipartFile file) {
         try {
             // Upload the image to Cloudinary
             Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
@@ -38,11 +38,11 @@ public class CloudinaryImageServiceImplements implements CloudinaryImageService{
             // You can extract other useful data if needed
 
             // Return the URL of the uploaded image
-            return Map.of("imageUrl", imageUrl);
+            return imageUrl;
         } catch (IOException e) {
 //            throw new RuntimeException("Image Uploading Fail");
             e.printStackTrace();
-            return Map.of("error", "An error occurred during image upload");
+            return Map.of("error", "An error occurred during image upload").toString();
         }
 
     }

@@ -32,9 +32,17 @@ private final CloudinaryImageService cloudinaryImageService;
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, String>> uploadImage(@RequestParam("image") MultipartFile file) {
-        Map<String, String> data = this.cloudinaryImageService.upload(file);
-        return new ResponseEntity<>(data, HttpStatus.OK);
+    public ResponseEntity<String> uploadImage(@RequestParam("image") MultipartFile file) {
+        String uploadResult = cloudinaryImageService.upload(file);
+
+        // Check if the upload was successful or not
+        if (uploadResult.contains("error")) {
+            // Handle the case where an error occurred during the upload
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(uploadResult);
+        }
+
+        // If upload was successful, return the map containing the URL and possibly other data
+        return ResponseEntity.ok(uploadResult);
     }
 }
 

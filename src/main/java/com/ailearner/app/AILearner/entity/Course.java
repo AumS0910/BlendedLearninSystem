@@ -12,6 +12,7 @@ public class Course {
     private String theory;
     private String videoUrl;
     private String conclusion;
+    private String coverImagePath;
 
     // Constructors
     public Course(String aim, String theory, String videoUrl, String conclusion) {
@@ -93,5 +94,13 @@ public class Course {
                 ", videoUrl='" + videoUrl + '\'' +
                 ", conclusion='" + conclusion + '\'' +
                 '}';
+    }
+
+    public String getCoverImagePath() {
+        return coverImagePath;
+    }
+
+    public void setCoverImagePath(String coverImagePath) {
+        this.coverImagePath = coverImagePath;
     }
 }
