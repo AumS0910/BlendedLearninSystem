@@ -32,7 +32,7 @@ public class CourseServiceImplements implements CourseService {
         if (!courseRepository.existsById(id)) {
             return null;
         }
-        course.setId(id);
+//        course.setId(id);
         return courseRepository.save(course);
     }
 

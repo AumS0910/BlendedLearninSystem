@@ -36,12 +36,26 @@ public class CourseController {
     }
 
     @PostMapping("/add")
-    public Course createCourse(@RequestBody Course course,MultipartFile file) {
-        String uploadResult=cloudinaryImageService.upload(file);
-        if(!uploadResult.isEmpty()){
+    public Course createCourse(@RequestParam("title") String title,
+                               @RequestParam("aim") String aim,
+                               @RequestParam("theory") String theory,
+                               @RequestParam("videoUrl") String videoUrl,
+                               @RequestParam("conclusion") String conclusion,
+                               @RequestParam("image") MultipartFile file) {
+
+        Course course = new Course(title,aim,theory,videoUrl,conclusion);
+
+//        course.setTitle(title);
+//        course.setAim(aim);
+//        course.setTheory(theory);
+//        course.setVideoUrl(videoUrl);
+//        course.setConclusion(conclusion);
+
+        String uploadResult = cloudinaryImageService.upload(file);
+        if (!uploadResult.isEmpty()) {
 //            String imageUrl= String.valueOf(uploadResult.contains("url"));
             course.setCoverImagePath(uploadResult);
-        }else{
+        } else {
             throw new RuntimeException("Failed to upload image");
         }
         return courseService.createCourse(course);

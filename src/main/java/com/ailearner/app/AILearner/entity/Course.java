@@ -2,11 +2,13 @@ package com.ailearner.app.AILearner.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document
 public class Course {
     @Id
-    private Long id;
+    @Field("_id")
+    private String id;
     private String title;
     private String aim;
     private String theory;
@@ -35,11 +37,11 @@ public class Course {
 
 
     // Getters and setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
