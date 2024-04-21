@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Document
 public class Course {
     @Id
@@ -15,6 +17,8 @@ public class Course {
     private String videoUrl;
     private String conclusion;
     private String coverImagePath;
+
+    private List<Quiz> quizzes;
 
     // Constructors
     public Course(String aim, String theory, String videoUrl, String conclusion) {
