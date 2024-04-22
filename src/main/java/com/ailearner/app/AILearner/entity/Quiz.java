@@ -42,4 +42,13 @@ public class Quiz {
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", questions=" + questions +
+                '}';
+    }
 }

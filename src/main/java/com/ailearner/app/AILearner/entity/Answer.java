@@ -24,6 +24,14 @@ public class Answer {
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "question=" + question +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }
 
 
