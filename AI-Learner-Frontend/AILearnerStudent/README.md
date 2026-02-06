@@ -1,16 +1,20 @@
-# ailearner
+# AI Learner Student App
 
-A new Flutter project.
+Flutter app used by students to:
+- browse learning activities,
+- attempt quizzes,
+- use interest-based learning flows,
+- access AI-assisted doubt solving features.
 
-## Getting Started
+## Run
+```bash
+flutter pub get
+flutter run
+```
 
-This project is a starting point for a Flutter application.
+## Backend Integration
+The app fetches course and quiz data from the backend APIs (`/course`, `/quizzes`) and uses Firebase for authentication and user profile storage.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Setup Notes
+- Place `google-services.json` in `android/app`.
+- Enable Firebase Authentication and Firestore for your Firebase project.
