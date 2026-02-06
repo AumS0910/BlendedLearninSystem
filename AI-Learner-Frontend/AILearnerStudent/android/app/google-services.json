@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "868790377456",
+    "project_id": "ai-learner-8069e",
+    "storage_bucket": "ai-learner-8069e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868790377456:android:4f84c7946d269c350adb35",
+        "android_client_info": {
+          "package_name": "com.riteshbakare420.admin.ai_learner_teacher"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATlYCIFcOAT9o2k4-TYnKTN4hcU79uEjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868790377456:android:87d7b3077768794a0adb35",
+        "android_client_info": {
+          "package_name": "com.riteshbakare420.ailearner.ailearner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATlYCIFcOAT9o2k4-TYnKTN4hcU79uEjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
