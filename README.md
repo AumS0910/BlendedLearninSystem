@@ -70,7 +70,7 @@ Prerequisites
 ### Steps
 
 1. Clone the Repository
-    `git clone https://github.com/RiteshBakare/AI-Learner.git`
+    `git clone https://github.com/AumS0910/BlendedLearninSystem.git`
 
 
 2. ``cd AILearnerStudent``
